@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'rake'
 
+# add your tasks in lib/tasks
+Dir["#{File.join(File.dirname(__FILE__), 'lib', 'tasks', '*.rake')}"].each { |ext| load ext }
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -9,28 +12,33 @@ begin
     gem.description = %Q{Written in Ruby, using Sinatra}
     gem.email = "alex@cloudware.it"
     gem.homepage = "http://github.com/crhym3/rmce_uploadr"
-    gem.authors = ["alex"]
-    gem.add_development_dependency "test-spec", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.authors = ["Alex Vagin"]
+    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.files.include('lib/**/*.rb')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/*_test.rb'
-  test.verbose = true
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/**/*_spec.rb']
+end
+
+Spec::Rake::SpecTask.new(:rcov) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
 end
 
 begin
   require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/**/*_test.rb'
-    test.verbose = true
+  Rcov::RcovTask.new do |rcov|
+    rcov.libs << 'lib' << 'spec'
+    rcov.pattern = 'spec/**/*_spec.rb'
+    rcov.verbose = true
   end
 rescue LoadError
   task :rcov do
@@ -38,16 +46,16 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
+task :spec => :check_dependencies
 
-task :default => :test
+task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "rmce_uploadr #{version}"
+  rdoc.title = "RMceUploadr #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
