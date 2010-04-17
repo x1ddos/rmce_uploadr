@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "image" do
+describe RMceUploadr::Image do
   it "should work"
 end

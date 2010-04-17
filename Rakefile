@@ -8,12 +8,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rmce_uploadr"
-    gem.summary = %Q{Images uploader for TinyMCE}
-    gem.description = %Q{Written in Ruby, using Sinatra}
+    gem.summary = %Q{Images uploader for TinyMCE editor}
+    gem.description = %Q{Written in Ruby, using Sinatra + ActiveRecord and Paperclip}
     gem.email = "alex@cloudware.it"
     gem.homepage = "http://github.com/crhym3/rmce_uploadr"
     gem.authors = ["Alex Vagin"]
     gem.add_dependency "sinatra", ">= 1.0"
+    gem.add_dependency "activerecord", ">= 2.3.4"
+    gem.add_dependency "paperclip", ">= 2.3.1.1"
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.files.include('lib/**/*.rb', 'lib/rmce_uploadr/public/**/*', 'lib/**/*.erb')
   end

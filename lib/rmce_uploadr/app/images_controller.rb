@@ -1,13 +1,13 @@
 module Sinatra
   
   module RMceUploadr
-    module Defaults
+    module ImagesController
     
       module Helpers
       
       end # module Helpers
     
-      # entry point for "register Sinatra::RMceUploadr::Defaults"
+      # entry point for "register Sinatra::RMceUploadr::ImagesController"
       def self.registered(app)
         app.get '/rmce_uploadr' do
           "hello from mce uploadr root path"
@@ -21,5 +21,5 @@ module Sinatra
     end # module Defaults
   end # RMceUploadr
   
-  register Sinatra::RMceUploadr::Defaults
+  register Sinatra::RMceUploadr::ImagesController
 end # module Sinatra

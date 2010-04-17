@@ -25,8 +25,10 @@
   # end
 
   # database backend
-  # require 'couchrest'
-  # require 'couchrest-uniqueness-validation'
+  require 'active_record'
+  
+  # image procesing
+  require 'paperclip'
   
   # XML serialization
   # require 'builder'
@@ -51,14 +53,7 @@
   # define empty main module so nobody complains
   module RMceUploadr; end
 
-  # load core modules. they'll load up everything else
-  Dir[root_path('rmce_uploadr', '*.rb')].each { |file| require file }
-  # # models
-  # # load the base class which will then require all the other models
-  # require root_path('models', 'base') 
-  # # controllers
-  # Dir[root_path('controllers', '**', '*.rb')].each { |file| require file }
-
+  # load core module. it'll load up everything else
   require root_path('rmce_uploadr', 'app', 'app')
 
   # this is to run the app with "ruby rmce_uploadr.rb"

@@ -1,3 +1,6 @@
+require root_path('rmce_uploadr', 'app', 'image')
+require root_path('rmce_uploadr', 'app', 'images_controller')
+
 #
 # main sinatra app, inside RMceUploadr module.
 #
@@ -17,16 +20,6 @@ module RMceUploadr
     
     use Rack::Session::Cookie
     #use Rack::Flash
-    
-    # respond_to blocks in routes
-    #register Sinatra::RespondTo
-    
-    # all action_pack-like helpers
-    #register Padrino::Helpers
-    
-    # find them in controllers/*.rb
-    # it is important that RMceUploadr::Defaults gets registered before other extensions
-    register Sinatra::RMceUploadr::Defaults
-    # register RMceUploadr::Tags
+    register Sinatra::RMceUploadr::ImagesController
   end
 end
