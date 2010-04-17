@@ -13,8 +13,9 @@ begin
     gem.email = "alex@cloudware.it"
     gem.homepage = "http://github.com/crhym3/rmce_uploadr"
     gem.authors = ["Alex Vagin"]
+    gem.add_dependency "sinatra", ">= 1.0"
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    gem.files.include('lib/**/*.rb')
+    gem.files.include('lib/**/*.rb', 'lib/rmce_uploadr/public/**/*', 'lib/**/*.erb')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
