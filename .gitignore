@@ -19,3 +19,7 @@ rdoc
 pkg
 
 ## PROJECT::SPECIFIC
+examples/**/log
+examples/**/tmp
+examples/**/db/*.sqlite3
+!examples/**/.gitignore

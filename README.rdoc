@@ -1,6 +1,45 @@
 = rmce_uploadr
 
-Description goes here.
+== URLs
+
+=== GET /rmce_uploadr/images
+
+* displays a list of all uploaded images along with their preview/snapshots
+* has a hidden upload form with an "upload" button
+
+
+=== GET /rmce_uploadr/images/:id
+
+Displays a single image, its available dimensions and a form-like thing to tag/untag the image.
+
+
+=== PUT /rmce_uploadr/images/:id
+
+Modifies an images metadata (name, tags, etc.) and the image itself.
+
+
+=== DELETE /rmce_uploadr/images/:id
+
+Deletes an image from the DB as well as from the disk.
+
+
+== POST /rmce_uploadr/images
+
+Upload form submition handler
+
+
+== GET /rmce_uploadr/tags.json
+
+Returns an array of all (unique) tags used for images tagging.
+e.g. [{"tag1": 3}, {"tag2": 5}, {"tag3": 7}]
+
+
+== GET /javascripts/<a file name>.js
+
+Returns a static javascript file from the gem's lib/rmce_uploadr/public/javascripts/ directory:
+* rmce_uploadr.js
+* tiny_mce/plugins/rmce_uploadr/editor_plugin.js
+
 
 == Note on Patches/Pull Requests
  
