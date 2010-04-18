@@ -1,44 +1,64 @@
 = rmce_uploadr
 
-== URLs
+Here's a scenario this gem is suitable for.
 
-=== GET /rmce_uploadr/images
+You have multiple rack/sinatra/rails CMS-like apps where a page editing is done with TinyMCE. 
+You want all of them use the same storage / database for image manipulation.
 
-* displays a list of all uploaded images along with their preview/snapshots
-* has a hidden upload form with an "upload" button
+This gem uses Sinatra, ActiveRecord and Paperclip.
 
+== Install
 
-=== GET /rmce_uploadr/images/:id
+For this gem to work you *have* to put your TinyMCE javascripts in public/javascripts/tiny_mce.
 
-Displays a single image, its available dimensions and a form-like thing to tag/untag the image.
+=== 1. Install the gem
 
+* add <tt>config.gem "rmce_uploadr"</tt> to environment.rb and run <tt>sudo rake gems:install</tt>
+* add <tt>gem "rmce_uploadr"</tt> to Gemfile if your using Bundler and run <tt>bundle install</tt>
 
-=== PUT /rmce_uploadr/images/:id
+=== 2. Set RMceUploadr::App as a middleware
 
-Modifies an images metadata (name, tags, etc.) and the image itself.
+* for a rails app add the following inside <tt>Rails::Initializer.run</tt> block:
+    config.middleware.use "RMceUploadr::App" do |conf|
+      # configuration according to ActiveRecord::Base.establish_connection
+      conf.dbconf = {:adapter => 'sqlite3', 
+                     :database => File.join(File.dirname(__FILE__), '..', '..', 'shared', 'db.sqlite3')}
+    end
+* almost the same if you're a rack/sinatra app:
+    use ::RMceUploadr::App do |conf|
+      # configuration according to ActiveRecord::Base.establish_connection
+      conf.dbconf = {:adapter => 'sqlite3', 
+                     :database => root_path('..', 'shared', 'db.sqlite3')}
+    end
 
+=== 3. Add plugin loading to TinyMCE init function, e.g.
 
-=== DELETE /rmce_uploadr/images/:id
+ <script type="text/javascript" charset="utf-8">
+   // Initialize TinyMCE with rmce_uploadr plugin and inlinepopups
+   tinyMCE.init({
+       plugins: "rmce_uploadr,inlinepopups",
+       mode : "textareas",
+       theme : "advanced",
+       dialog_type: 'modal',
+       theme_advanced_buttons1 : "bold,italic,underline,separator,strikethrough,bullist,numlist,undo,redo,link,unlink,image",
+       theme_advanced_buttons2 : "",
+       theme_advanced_buttons3 : "",
+       theme_advanced_toolbar_location : "top",
+       theme_advanced_toolbar_align : "left",
+       theme_advanced_statusbar_location : "bottom"
+   });
+ </script>
 
-Deletes an image from the DB as well as from the disk.
+Notice <tt>plugins: "rmce_uploadr"</tt> and <tt>theme_advanced_buttons1: "image"</tt> (which you probably have already).
 
+=== 4. You're done
 
-== POST /rmce_uploadr/images
+Uploaded files will live in <tt>public/uploads/g/images/:id_partition/:style_:filename</tt> so 
+you probably want <tt>public/uploads/g/</tt> to be shared accross all your apps.
 
-Upload form submition handler
-
-
-== GET /rmce_uploadr/tags.json
-
-Returns an array of all (unique) tags used for images tagging.
-e.g. [{"tag1": 3}, {"tag2": 5}, {"tag3": 7}]
-
-
-== GET /javascripts/<a file name>.js
-
-Returns a static javascript file from the gem's lib/rmce_uploadr/public/javascripts/ directory:
-* rmce_uploadr.js
-* tiny_mce/plugins/rmce_uploadr/editor_plugin.js
+=== 5. Check out rails and sinatra examples 
+<tt>examples/rails</tt> and <tt>examples/sinatra</tt> are setup to work with <tt>examples/shared/db.sqlite3</tt> and 
+<tt>examples/shared/uploads</tt> directory.
 
 
 == Note on Patches/Pull Requests
