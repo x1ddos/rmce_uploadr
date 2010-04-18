@@ -40,8 +40,9 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  config.middleware.use "RMceUploadr::App" do |conf|
-    conf.dbconf = {:adapter => 'sqlite3', 
+  config.middleware.use "RMceUploadr::App" do |app|
+    app.dbconf = {:adapter => 'sqlite3', 
                    :database => File.join(File.dirname(__FILE__), '..', '..', 'shared', 'db.sqlite3')}
+    conf.settings.set :cdn_host, "http://localhost:3000"
   end
 end

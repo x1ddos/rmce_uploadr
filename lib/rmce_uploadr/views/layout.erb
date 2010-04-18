@@ -43,7 +43,11 @@
     <div id="main_area">
       <%= yield %>
     </div>
-  
+
+    <script type="text/javascript" charset="utf-8">
+      var uploadrCdnHost = "<%= settings.cdn_host %>";
+    </script>
+    
     <script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce_popup.js"></script>
     <script type="text/javascript" src="/javascripts/rmce_uploadr/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="/javascripts/rmce_uploadr.js"></script>

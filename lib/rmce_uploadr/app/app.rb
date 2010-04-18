@@ -18,6 +18,11 @@ module RMceUploadr
     set :public, rmce_uploadr_root_path('rmce_uploadr', 'public')
     set :views, rmce_uploadr_root_path('rmce_uploadr', 'views')
     
+    # a host that distributes static content
+    # can be set in use RMceUPloadr::App do |conf| block like
+    # conf.settings.set :cdn_host, "http://cdn.host.com/"
+    set :cdn_host, nil
+    
     def dbconf=(opts)
       RMceUploadr.dbconf = opts
     end

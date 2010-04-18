@@ -617,6 +617,7 @@ Gem::Specification.new do |s|
      "spec/core_ext_spec.rb",
      "spec/image_spec.rb",
      "spec/images_controller_spec.rb",
+     "spec/layout_spec.rb",
      "spec/spec_helper.rb",
      "examples/rails/app/controllers/application_controller.rb",
      "examples/rails/app/controllers/posts_controller.rb",

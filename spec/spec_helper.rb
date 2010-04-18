@@ -15,7 +15,7 @@ require 'spec/autorun'
 
 module RMceUploadr; module Test; module Controllers
   def app
-    @app ||= ::RMCEUploadr::App
+    @app ||= ::RMceUploadr::App
   end
 end; end; end
 
