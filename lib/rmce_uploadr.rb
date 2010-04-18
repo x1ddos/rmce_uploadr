@@ -50,8 +50,20 @@
   #   def code; 404 end
   # end; end; end
 
-  # define empty main module so nobody complains
-  module RMceUploadr; end
+  # database connection stuff
+  module RMceUploadr
+    
+    # Establishes a connection pool for RMceUploadr::Image
+    #
+    # Expects a config/database.yml (as in Rails)
+    # database config file or directly a hash in the format of
+    # ActiveRecord::Base#establish_connection
+    def self.dbconf=(filename_or_hash)
+      dbconf = filename_or_hash.kind_of?(Hash) ? filename_or_hash : YAML.load_file(filename)[environment]
+      RMceUploadr::Image.establish_connection(dbconf)
+      RMceUploadr::Image.logger = Logger.new(STDOUT)
+    end
+  end
 
   # load core module. it'll load up everything else
   require root_path('rmce_uploadr', 'app', 'app')

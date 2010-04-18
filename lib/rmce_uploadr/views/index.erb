@@ -1,3 +1,9 @@
 <p>
   images index files (GET /rmce_uploadr/images)
 </p>
+
+<ul>
+  <% @images.each do |image| %>
+    <li><%= image.data_file_name %></li>
+  <% end %>
+</ul>

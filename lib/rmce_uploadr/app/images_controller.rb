@@ -14,6 +14,7 @@ module Sinatra
         end
         
         app.get '/rmce_uploadr/images' do
+          @images = ::RMceUploadr::Image.all
           erb :index
         end
       end

@@ -18,6 +18,10 @@ module RMceUploadr
     set :public, root_path('rmce_uploadr', 'public')
     set :views, root_path('rmce_uploadr', 'views')
     
+    def dbconf=(opts)
+      RMceUploadr.dbconf = opts
+    end
+    
     use Rack::Session::Cookie
     #use Rack::Flash
     register Sinatra::RMceUploadr::ImagesController

@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alex Vagin"]
   s.date = %q{2010-04-17}
-  s.description = %q{Written in Ruby, using Sinatra}
+  s.description = %q{Written in Ruby, using Sinatra + ActiveRecord and Paperclip}
   s.email = %q{alex@cloudware.it}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -329,9 +329,8 @@ Gem::Specification.new do |s|
      "examples/railsapp/test/unit/post_test.rb",
      "lib/rmce_uploadr.rb",
      "lib/rmce_uploadr/app/app.rb",
-     "lib/rmce_uploadr/controllers.rb",
-     "lib/rmce_uploadr/controllers/defaults.rb",
-     "lib/rmce_uploadr/controllers/tiny_mce_plugin.rb",
+     "lib/rmce_uploadr/app/image.rb",
+     "lib/rmce_uploadr/app/images_controller.rb",
      "lib/rmce_uploadr/public/images/rmce_uploadr_icon.png",
      "lib/rmce_uploadr/public/javascripts/rmce_uploadr.js",
      "lib/rmce_uploadr/public/javascripts/tiny_mce/plugins/rmce_uploadr/editor_plugin.js",
@@ -339,7 +338,9 @@ Gem::Specification.new do |s|
      "lib/rmce_uploadr/views/index.erb",
      "lib/rmce_uploadr/views/layout.erb",
      "rmce_uploadr.gemspec",
-     "spec/models/image_spec.rb",
+     "spec/app_spec.rb",
+     "spec/image_spec.rb",
+     "spec/images_controller_spec.rb",
      "spec/rcov.opts",
      "spec/spec.opts",
      "spec/spec_helper.rb"
@@ -348,9 +349,11 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
-  s.summary = %q{Images uploader for TinyMCE}
+  s.summary = %q{Images uploader for TinyMCE editor}
   s.test_files = [
-    "spec/models/image_spec.rb",
+    "spec/app_spec.rb",
+     "spec/image_spec.rb",
+     "spec/images_controller_spec.rb",
      "spec/spec_helper.rb",
      "examples/railsapp/app/controllers/application_controller.rb",
      "examples/railsapp/app/controllers/posts_controller.rb",
@@ -385,13 +388,19 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<sinatra>, [">= 1.0"])
+      s.add_runtime_dependency(%q<activerecord>, [">= 2.3.4"])
+      s.add_runtime_dependency(%q<paperclip>, [">= 2.3.1.1"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
       s.add_dependency(%q<sinatra>, [">= 1.0"])
+      s.add_dependency(%q<activerecord>, [">= 2.3.4"])
+      s.add_dependency(%q<paperclip>, [">= 2.3.1.1"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
   else
     s.add_dependency(%q<sinatra>, [">= 1.0"])
+    s.add_dependency(%q<activerecord>, [">= 2.3.4"])
+    s.add_dependency(%q<paperclip>, [">= 2.3.1.1"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end
 end
