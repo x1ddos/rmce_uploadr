@@ -24,6 +24,21 @@ class RMceUploadr::Image < ActiveRecord::Base
     "#{width}x#{height}"
   end
   
+  # Convers image size in B, Kb, Mb or Gb
+  # and returns something like "10Kb"
+  def size_in_bytes
+    case data_file_size
+    when 0..1023
+      "#{data_file_size}B"
+    when 1024..1048575
+      "#{(data_file_size / 1024.0).round}Kb"
+    when 1048576..1073741823
+      "#{(data_file_size / 1048576.0).round}Mb"
+    else
+      "#{(data_file_size / 1073741823.0).round}Gb"
+    end
+  end
+  
   private
   
   def update_image_geometry

@@ -21,11 +21,27 @@ describe RMceUploadr::Image do
   
   it "should return empty string if either width or height isn't set" do
     @image.geometry.should be_empty
+    
     @image.stub!(:width).and_return(10)
     @image.geometry.should be_empty
+    
     @image.stub!(:width).and_return(nil)
     @image.stub!(:height).and_return(10)
     @image.geometry.should be_empty
+  end
+  
+  it "should return image file size in human format" do
+    @image.stub!(:data_file_size).and_return(1000)
+    @image.size_in_bytes.should == "1000B"
+    
+    @image.stub!(:data_file_size).and_return(10000)
+    @image.size_in_bytes.should == "10Kb"
+    
+    @image.stub!(:data_file_size).and_return(2000000)
+    @image.size_in_bytes.should == "2Mb"
+    
+    @image.stub!(:data_file_size).and_return(30000000000)
+    @image.size_in_bytes.should == "28Gb"
   end
   
   describe "saving an object" do
