@@ -43,6 +43,6 @@ Rails::Initializer.run do |config|
   config.middleware.use "RMceUploadr::App" do |app|
     app.dbconf = {:adapter => 'sqlite3', 
                    :database => File.join(File.dirname(__FILE__), '..', '..', 'shared', 'db.sqlite3')}
-    conf.settings.set :cdn_host, "http://localhost:3000"
+    app.settings.set :cdn_host, "http://localhost:3000"
   end
 end

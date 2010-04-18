@@ -19,6 +19,7 @@ begin
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "rack-test", ">= 0.5.3"
     gem.files.include('lib/**/*.rb', 'lib/rmce_uploadr/public/**/*', 'lib/**/*.erb')
+    gem.test_files.include('spec/test.sqlite3')
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

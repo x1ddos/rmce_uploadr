@@ -22,8 +22,7 @@ module Sinatra
         # actual image upload 
         app.post '/rmce_uploadr/images' do
           data = Fash.new(params[:image][:data])
-          puts data.inspect
-          @image = ::RMceUploadr::Image.new(:data => data)
+          @image = ::RMceUploadr::Image.new(:data => data, :tempfile => data.to_tempfile)
           @image.save
           redirect '/rmce_uploadr/images'
         end

@@ -21,9 +21,12 @@ end; end; end
 
 Spec::Runner.configure do |config|
   Rake.application = Rake::Application.new
-  # load File.join(File.dirname(__FILE__), '..', 'Rakefile')
+
+  # before all tests begin
   config.before(:all) do
-    # before :all tests config
+    ActiveRecord::Base.establish_connection(
+      :database => File.join(File.dirname(__FILE__), 'test.sqlite3'),
+      :adapter => "sqlite3")
   end
   
   config.after(:all) do

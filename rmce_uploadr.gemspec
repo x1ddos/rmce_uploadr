@@ -603,6 +603,7 @@ Gem::Specification.new do |s|
      "spec/core_ext_spec.rb",
      "spec/image_spec.rb",
      "spec/images_controller_spec.rb",
+     "spec/layout_spec.rb",
      "spec/rcov.opts",
      "spec/spec.opts",
      "spec/spec_helper.rb"
@@ -645,7 +646,8 @@ Gem::Specification.new do |s|
      "examples/sinatra/app/post.rb",
      "examples/sinatra/app/posts_controller.rb",
      "examples/sinatra/boot.rb",
-     "examples/sinatra/scripts/console.rb"
+     "examples/sinatra/scripts/console.rb",
+     "spec/test.sqlite3"
   ]
 
   if s.respond_to? :specification_version then
@@ -657,17 +659,20 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activerecord>, [">= 2.3.4"])
       s.add_runtime_dependency(%q<paperclip>, [">= 2.3.1.1"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_development_dependency(%q<rack-test>, [">= 0.5.3"])
     else
       s.add_dependency(%q<sinatra>, [">= 1.0"])
       s.add_dependency(%q<activerecord>, [">= 2.3.4"])
       s.add_dependency(%q<paperclip>, [">= 2.3.1.1"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_dependency(%q<rack-test>, [">= 0.5.3"])
     end
   else
     s.add_dependency(%q<sinatra>, [">= 1.0"])
     s.add_dependency(%q<activerecord>, [">= 2.3.4"])
     s.add_dependency(%q<paperclip>, [">= 2.3.1.1"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
+    s.add_dependency(%q<rack-test>, [">= 0.5.3"])
   end
 end
 
