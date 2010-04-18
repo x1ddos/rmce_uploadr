@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alex Vagin"]
-  s.date = %q{2010-04-17}
+  s.date = %q{2010-04-18}
   s.description = %q{Written in Ruby, using Sinatra + ActiveRecord and Paperclip}
   s.email = %q{alex@cloudware.it}
   s.extra_rdoc_files = [
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "examples/db/shared.sqlite3",
      "examples/rack/config.ru",
      "examples/rack/runme",
      "examples/railsapp/README",
@@ -31,7 +32,6 @@ Gem::Specification.new do |s|
      "examples/railsapp/app/controllers/posts_controller.rb",
      "examples/railsapp/app/helpers/application_helper.rb",
      "examples/railsapp/app/helpers/posts_helper.rb",
-     "examples/railsapp/app/metal/rmce_uploadr_metal.rb",
      "examples/railsapp/app/models/post.rb",
      "examples/railsapp/app/views/layouts/posts.html.erb",
      "examples/railsapp/app/views/posts/edit.html.erb",
@@ -325,8 +325,7 @@ Gem::Specification.new do |s|
      "examples/railsapp/test/functional/posts_controller_test.rb",
      "examples/railsapp/test/performance/browsing_test.rb",
      "examples/railsapp/test/test_helper.rb",
-     "examples/railsapp/test/unit/helpers/posts_helper_test.rb",
-     "examples/railsapp/test/unit/post_test.rb",
+     "examples/sinatra/app.rb",
      "lib/rmce_uploadr.rb",
      "lib/rmce_uploadr/app/app.rb",
      "lib/rmce_uploadr/app/image.rb",
@@ -359,7 +358,6 @@ Gem::Specification.new do |s|
      "examples/railsapp/app/controllers/posts_controller.rb",
      "examples/railsapp/app/helpers/application_helper.rb",
      "examples/railsapp/app/helpers/posts_helper.rb",
-     "examples/railsapp/app/metal/rmce_uploadr_metal.rb",
      "examples/railsapp/app/models/post.rb",
      "examples/railsapp/config/boot.rb",
      "examples/railsapp/config/environment.rb",
@@ -378,8 +376,7 @@ Gem::Specification.new do |s|
      "examples/railsapp/test/functional/posts_controller_test.rb",
      "examples/railsapp/test/performance/browsing_test.rb",
      "examples/railsapp/test/test_helper.rb",
-     "examples/railsapp/test/unit/helpers/posts_helper_test.rb",
-     "examples/railsapp/test/unit/post_test.rb"
+     "examples/sinatra/app.rb"
   ]
 
   if s.respond_to? :specification_version then
