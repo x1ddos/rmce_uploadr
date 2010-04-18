@@ -21,7 +21,6 @@ pkg
 ## PROJECT::SPECIFIC
 examples/**/log
 examples/**/tmp
-examples/**/db/*.sqlite3
-examples/db/*.sqlite3
-examples/**/*/uploads
-!examples/**/.gitignore
+examples/shared/uploads
+examples/railsapp/db/*.sqlite3
+!examples/**/*/.gitignore

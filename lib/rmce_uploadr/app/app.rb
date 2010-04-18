@@ -1,5 +1,5 @@
-require root_path('rmce_uploadr', 'app', 'image')
-require root_path('rmce_uploadr', 'app', 'images_controller')
+require rmce_uploadr_root_path('rmce_uploadr', 'app', 'image')
+require rmce_uploadr_root_path('rmce_uploadr', 'app', 'images_controller')
 
 #
 # main sinatra app, inside RMceUploadr module.
@@ -14,9 +14,9 @@ module RMceUploadr
     set :show_exceptions, Proc.new { development? }
     
     set :static, true
-    set :root, root_path('rmce_uploadr')
-    set :public, root_path('rmce_uploadr', 'public')
-    set :views, root_path('rmce_uploadr', 'views')
+    set :root, rmce_uploadr_root_path('rmce_uploadr')
+    set :public, rmce_uploadr_root_path('rmce_uploadr', 'public')
+    set :views, rmce_uploadr_root_path('rmce_uploadr', 'views')
     
     def dbconf=(opts)
       RMceUploadr.dbconf = opts

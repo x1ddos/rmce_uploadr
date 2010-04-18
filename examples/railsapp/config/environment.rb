@@ -42,6 +42,6 @@ Rails::Initializer.run do |config|
   
   config.middleware.use "RMceUploadr::App" do |conf|
     conf.dbconf = {:adapter => 'sqlite3', 
-                   :database => File.join(File.dirname(__FILE__), '..', '..', 'db', 'shared.sqlite3')}
+                   :database => File.join(File.dirname(__FILE__), '..', '..', 'shared', 'db.sqlite3')}
   end
 end

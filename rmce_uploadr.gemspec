@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "examples/db/shared.sqlite3",
      "examples/rack/config.ru",
      "examples/rack/runme",
      "examples/railsapp/README",
@@ -48,6 +47,7 @@ Gem::Specification.new do |s|
      "examples/railsapp/config/initializers/inflections.rb",
      "examples/railsapp/config/initializers/mime_types.rb",
      "examples/railsapp/config/initializers/new_rails_defaults.rb",
+     "examples/railsapp/config/initializers/paperclip.rb",
      "examples/railsapp/config/initializers/session_store.rb",
      "examples/railsapp/config/locales/en.yml",
      "examples/railsapp/config/routes.rb",
@@ -342,6 +342,7 @@ Gem::Specification.new do |s|
      "lib/rmce_uploadr/views/layout.erb",
      "rmce_uploadr.gemspec",
      "spec/app_spec.rb",
+     "spec/core_ext_spec.rb",
      "spec/image_spec.rb",
      "spec/images_controller_spec.rb",
      "spec/rcov.opts",
@@ -382,7 +383,11 @@ Gem::Specification.new do |s|
      "examples/railsapp/test/functional/posts_controller_test.rb",
      "examples/railsapp/test/performance/browsing_test.rb",
      "examples/railsapp/test/test_helper.rb",
-     "examples/sinatra/app.rb"
+     "examples/sinatra/app.rb",
+     "examples/sinatra2/app/post.rb",
+     "examples/sinatra2/app/posts_controller.rb",
+     "examples/sinatra2/boot.rb",
+     "examples/sinatra2/scripts/console.rb"
   ]
 
   if s.respond_to? :specification_version then

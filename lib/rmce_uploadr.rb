@@ -1,28 +1,15 @@
-# RMceUploader standalong app
+# RMceUploader rack middleware app
 #unless defined? RMceUploadr
   
   RACK_ENV = ENV["RACK_ENV"] || ENV["RAILS_ENV"] || "development" unless defined? RACK_ENV
-  ROOT_DIR = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT_DIR
-
-  require 'rubygems'
-  # require 'bundler'
-  #   Bundler.setup(:default, RACK_ENV.to_sym)
+  RMCE_ROOT_DIR = File.expand_path(File.dirname(__FILE__))
 
   # returns a path related to where this file is directory
-  def root_path(*args)
-    File.join(ROOT_DIR, *args)
+  def rmce_uploadr_root_path(*args)
+    File.join(RMCE_ROOT_DIR, *args)
   end
-
-  # def appconf(key)
-  #   $application_config ||= YAML.load_file(root_path("config", "settings.yml"))[RACK_ENV.to_sym]
-  # 
-  #   unless $application_config.include?(key)
-  #     message = "No setting defined for #{key.inspect}."
-  #     defined?(logger) ? logger.warn(message) : $application_config.puts(message)
-  #   end
-  # 
-  #   $application_config[key]
-  # end
+  
+  require 'rubygems'
 
   # database backend
   require 'active_record'
@@ -66,10 +53,10 @@
   end
 
   # some core extensions
-  require root_path('rmce_uploadr', 'core', 'ext')
+  require rmce_uploadr_root_path('rmce_uploadr', 'core', 'ext')
   
   # load app module. it'll load up everything else
-  require root_path('rmce_uploadr', 'app', 'app')
+  require rmce_uploadr_root_path('rmce_uploadr', 'app', 'app')
 
   # this is to run the app with "ruby rmce_uploadr.rb"
   # don't need for a rackup though.
