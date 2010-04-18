@@ -24,13 +24,16 @@ Spec::Runner.configure do |config|
 
   # before all tests begin
   config.before(:all) do
+    test_db = File.join(File.dirname(__FILE__), 'dummy.sqlite3')
+    FileUtils.cp File.join(File.dirname(__FILE__), 'test.sqlite3'), test_db
     ActiveRecord::Base.establish_connection(
-      :database => File.join(File.dirname(__FILE__), 'test.sqlite3'),
+      :database => test_db,
       :adapter => "sqlite3")
   end
   
+  # after :all tests end
   config.after(:all) do
-    # after :all tests config
+    FileUtils.rm File.join(File.dirname(__FILE__), 'dummy.sqlite3')
   end
   
   config.include(Rack::Test::Methods, RMceUploadr::Test::Controllers, :type => :controller)
