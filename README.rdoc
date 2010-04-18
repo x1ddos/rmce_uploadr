@@ -19,17 +19,21 @@ For this gem to work you *have* to put your TinyMCE javascripts in public/javasc
 === 2. Set RMceUploadr::App as a middleware
 
 * for a rails app add the following inside <tt>Rails::Initializer.run</tt> block:
-    config.middleware.use "RMceUploadr::App" do |conf|
+    config.middleware.use "RMceUploadr::App" do |app|
       # configuration according to ActiveRecord::Base.establish_connection
-      conf.dbconf = {:adapter => 'sqlite3', 
-                     :database => File.join(File.dirname(__FILE__), '..', '..', 'shared', 'db.sqlite3')}
+      app.dbconf = {:adapter => 'sqlite3', 
+                    :database => File.join(File.dirname(__FILE__), '..', '..', 'shared', 'db.sqlite3')}
+      app.settings.set :cdn_host, "http://localhost:3000"
     end
 * almost the same if you're a rack/sinatra app:
-    use ::RMceUploadr::App do |conf|
+    use ::RMceUploadr::App do |app|
       # configuration according to ActiveRecord::Base.establish_connection
-      conf.dbconf = {:adapter => 'sqlite3', 
-                     :database => root_path('..', 'shared', 'db.sqlite3')}
+      app.dbconf = {:adapter => 'sqlite3', 
+                    :database => root_path('..', 'shared', 'db.sqlite3')}
     end
+<tt>cdn_host</tt> is an optional parameter. Useful when you host your images through another domain.
+Having this set will result in images src attribute be an absolute URL, otherwise image URLs will
+be something like "/public/uploads/g/images/..."
 
 === 3. Add plugin loading to TinyMCE init function, e.g.
 
