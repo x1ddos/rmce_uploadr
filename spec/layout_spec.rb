@@ -8,6 +8,6 @@ describe "Main layout", :type => :controller do
   
   it "should set javascript global cdn host variable" do
     get '/rmce_uploadr/images'
-    last_response.body.should =~ /var +uploadrCdnHost += +["']http:\/\/mycdn\.host\.com\/["']/
+    last_response.body.should =~ /var +uploadrCdnHost += +["']http:\/\/mycdn\.host\.com\/["'];/
   end
 end

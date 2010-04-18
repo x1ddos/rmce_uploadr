@@ -17,6 +17,7 @@ begin
     gem.add_dependency "activerecord", ">= 2.3.4"
     gem.add_dependency "paperclip", ">= 2.3.1.1"
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "rack-test", ">= 0.5.3"
     gem.files.include('lib/**/*.rb', 'lib/rmce_uploadr/public/**/*', 'lib/**/*.erb')
   end
   Jeweler::GemcutterTasks.new
