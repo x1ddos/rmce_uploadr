@@ -22,5 +22,5 @@ pkg
 examples/**/log
 examples/**/tmp
 examples/shared/uploads
-examples/railsapp/db/*.sqlite3
+examples/rails/db/*.sqlite3
 !examples/**/*/.gitignore

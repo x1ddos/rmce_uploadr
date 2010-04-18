@@ -1,0 +1,8 @@
+<h1>Posts list</h1>
+<p><a href="<%= posts_path('/new') %>">Create a new Post</a></p>
+
+<% @posts.each do |post| %>
+  <h2><a href="<%= posts_path("/#{post.id}") %>"><%= post.title %></a></h2>
+  <p>Created on <%= post.created_at %></p>
+  <p><a href="<%= posts_path("/#{post.id}/edit") %>">Edit</a></p>
+<% end %>

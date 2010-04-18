@@ -1,3 +1,0 @@
-#!/bin/bash
-
-shotgun -s thin -o 0.0.0.0 -p 3003
