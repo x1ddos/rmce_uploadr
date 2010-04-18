@@ -2,6 +2,8 @@
   <div class="image">
     <img src="<%= image.data.url(:thumb) %>" width="100" height="100" class="srcimage"
          data-src-original="<%= image.data.url(:original) %>" />
+    <br/>
+    <span class="small"><%= image.size_in_bytes %>, <%= image.geometry %></span>
   </div>
 <% end %>
 

@@ -606,7 +606,8 @@ Gem::Specification.new do |s|
      "spec/layout_spec.rb",
      "spec/rcov.opts",
      "spec/spec.opts",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "spec/test.sqlite3"
   ]
   s.homepage = %q{http://github.com/crhym3/rmce_uploadr}
   s.rdoc_options = ["--charset=UTF-8"]
