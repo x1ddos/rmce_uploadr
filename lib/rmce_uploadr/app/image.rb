@@ -17,6 +17,13 @@ class RMceUploadr::Image < ActiveRecord::Base
   
   before_save :update_image_geometry
   
+  # Returns a string with width and height
+  # e.g. "100x50"
+  def geometry
+    return "" if width.nil? || height.nil?
+    "#{width}x#{height}"
+  end
+  
   private
   
   def update_image_geometry

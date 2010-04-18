@@ -13,6 +13,21 @@ describe RMceUploadr::Image do
     @image.should respond_to(:data=)
   end
   
+  it "should return its dimensions" do
+    @image.stub!(:width).and_return(23)
+    @image.stub!(:height).and_return(45)
+    @image.geometry.should == "23x45"
+  end
+  
+  it "should return empty string if either width or height isn't set" do
+    @image.geometry.should be_empty
+    @image.stub!(:width).and_return(10)
+    @image.geometry.should be_empty
+    @image.stub!(:width).and_return(nil)
+    @image.stub!(:height).and_return(10)
+    @image.geometry.should be_empty
+  end
+  
   describe "saving an object" do
     before(:each) do
       @geometry = mock("geometry", :width => 10, :height => "11")
