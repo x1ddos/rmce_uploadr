@@ -330,8 +330,12 @@ Gem::Specification.new do |s|
      "lib/rmce_uploadr/app/app.rb",
      "lib/rmce_uploadr/app/image.rb",
      "lib/rmce_uploadr/app/images_controller.rb",
+     "lib/rmce_uploadr/core/ext.rb",
+     "lib/rmce_uploadr/core/fash.rb",
+     "lib/rmce_uploadr/core/mash.rb",
      "lib/rmce_uploadr/public/images/rmce_uploadr_icon.png",
      "lib/rmce_uploadr/public/javascripts/rmce_uploadr.js",
+     "lib/rmce_uploadr/public/javascripts/rmce_uploadr/jquery-1.4.2.min.js",
      "lib/rmce_uploadr/public/javascripts/tiny_mce/plugins/rmce_uploadr/editor_plugin.js",
      "lib/rmce_uploadr/public/javascripts/tiny_mce/plugins/rmce_uploadr/editor_plugin_src.js",
      "lib/rmce_uploadr/views/index.erb",
@@ -351,6 +355,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Images uploader for TinyMCE editor}
   s.test_files = [
     "spec/app_spec.rb",
+     "spec/core_ext_spec.rb",
      "spec/image_spec.rb",
      "spec/images_controller_spec.rb",
      "spec/spec_helper.rb",
@@ -368,6 +373,7 @@ Gem::Specification.new do |s|
      "examples/railsapp/config/initializers/inflections.rb",
      "examples/railsapp/config/initializers/mime_types.rb",
      "examples/railsapp/config/initializers/new_rails_defaults.rb",
+     "examples/railsapp/config/initializers/paperclip.rb",
      "examples/railsapp/config/initializers/session_store.rb",
      "examples/railsapp/config/routes.rb",
      "examples/railsapp/db/migrate/20100417132216_create_posts.rb",

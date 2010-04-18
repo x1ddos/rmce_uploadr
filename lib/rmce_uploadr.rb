@@ -65,7 +65,10 @@
     end
   end
 
-  # load core module. it'll load up everything else
+  # some core extensions
+  require root_path('rmce_uploadr', 'core', 'ext')
+  
+  # load app module. it'll load up everything else
   require root_path('rmce_uploadr', 'app', 'app')
 
   # this is to run the app with "ruby rmce_uploadr.rb"

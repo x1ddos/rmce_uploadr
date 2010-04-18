@@ -3,7 +3,42 @@
 <html>
   <head>
     <title>RMce Uploadr</title>
+    <script type="text/javascript" charset="utf-8" src="/javascripts/tiny_mce/tiny_mce_popup.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/javascripts/rmce_uploadr/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/javascripts/rmce_uploadr.js"></script>
   </head>
+  <div id="upload_form">
+    <form action="/rmce_uploadr/images" method="post" enctype="multipart/form-data">
+      <input type="file" name="image[data]"/>
+      <input type="submit" value="Upload"/>
+    </form>
+  </div>
   <%= yield %>
+  
+  <script type="text/javascript" charset="utf-8">
+    $(function(){
+      $("[data-src-original]").click(function(){
+        var editor = tinyMCEPopup.editor;
+
+        // Fixes crash in Safari
+        if (tinymce.isWebKit) { editor.getWin().focus(); }
+        
+        var imgParams = {
+          src: $(this).attr('data-src-original')
+        };
+        
+        var original = editor.selection.getNode();
+        if (original && original.nodeName == 'IMG') {
+    			editor.dom.setAttribs(original, imgParams);
+    		} else {
+    			editor.execCommand('mceInsertContent', false, '<img id="__mce_tmp" />', {skip_undo : 1});
+    			editor.dom.setAttribs('__mce_tmp', imgParams);
+    			editor.dom.setAttrib('__mce_tmp', 'id', '');
+    			editor.undoManager.add();
+    		}
+    			
+        tinyMCEPopup.close();
+      });
+    });
+  </script>
 </html>

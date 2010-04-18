@@ -22,4 +22,5 @@ pkg
 examples/**/log
 examples/**/tmp
 examples/**/db/*.sqlite3
+examples/**/*/uploads
 !examples/**/.gitignore
