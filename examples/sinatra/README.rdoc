@@ -1,6 +1,6 @@
 = How to run
 
-It is pretty much setup already. <tt>db/development.sqlite3</tt> contains valid <tt>images</tt> (empty) table so all you need to do is run
+It is pretty much setup already. <tt>db/development.sqlite3</tt> contains valid <tt>posts</tt> (empty) table so all you need to do is run
 
   bundle install
  
